@@ -19,7 +19,9 @@ function thing() {
     <div className="App">
       <div id="timer">
         <h1 id="test" dangerouslySetInnerHTML={{__html: minutes}}></h1>
-        <h1>:</h1>
+        <div id="colon">
+          <h1 id="idk">:</h1>
+          </div>
         <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
       </div>
       <div>

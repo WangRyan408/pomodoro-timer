@@ -21,5 +21,16 @@
 #timer {
   display: flex;
   flex-direction: row;
+  outline: 1px solid white;
+}
+
+#colon {
+  display: flex;
+  flex-direction: column;
   
+  
+}
+
+#idk {
+  margin-top: 19px;
 }
