@@ -1,6 +1,4 @@
 
-
-
 .App {
   text-align: center;
   background-color: var(--bg-color-red);
@@ -21,7 +19,7 @@
 #timer {
   display: flex;
   flex-direction: row;
-  outline: 1px solid white;
+  
 }
 
 #colon {
