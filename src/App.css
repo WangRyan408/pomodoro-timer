@@ -1,4 +1,6 @@
 
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .App {
   text-align: center;
   background-color: var(--bg-color-red);
@@ -10,6 +12,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .buttons {
@@ -19,16 +22,36 @@
 #timer {
   display: flex;
   flex-direction: row;
-  
+  color: white;
 }
 
 #colon {
   display: flex;
   flex-direction: column;
-  
-  
+
 }
+
+button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
 
 #idk {
   margin-top: 19px;
+}
+
+#title {
+  color: white;
+  margin-top: -25px;
 }

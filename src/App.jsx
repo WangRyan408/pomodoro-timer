@@ -123,6 +123,7 @@ function reset(){
 
   return (
     <div className="App">
+      <h1 id="title">Pomodoro Timer</h1>
       <div id="timer">
         <h1 id="test" dangerouslySetInnerHTML={{__html: minutes}}></h1>
         <div id="colon">
