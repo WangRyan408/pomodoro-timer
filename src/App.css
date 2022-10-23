@@ -15,10 +15,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.buttons {
-  margin: 10px 5px 0 5px;
-}
-
 #timer {
   display: flex;
   flex-direction: row;
@@ -31,7 +27,7 @@
 
 }
 
-button {
+.button {
   background-color: black;
   color: white;
   border-radius: 5px;
@@ -44,6 +40,7 @@ button {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  margin: 10px 5px 0 5px;
 }
 
 
@@ -53,5 +50,6 @@ button {
 
 #title {
   color: white;
-  margin-top: -25px;
+  margin-top: -150px;
+  
 }

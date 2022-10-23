@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useRef, useEffect, useMemo } from 'react';
 import './App.css';
 
+
 function App() {
 
 const [minutes, setMinutes] = useState('00');
@@ -12,7 +13,6 @@ const [start, setStart] = useState(false);
 
 const myRef = useRef(null);
 //const audio = document.querySelector('#alarm');
-const audio = useMemo(() => new Audio('/public/assets/Softchime.mp3'), []);
 const num = {
   0: '00',
   1: '01',
@@ -28,7 +28,7 @@ const num = {
 
 function startButton() {
   setStart(true);
-  console.log({"Path": audio.src})
+  
 }
 
 function pauseButton() {
@@ -37,15 +37,12 @@ function pauseButton() {
   if (start) {
     setStart(false);
     setButtonText('Resume');
-  } else {
+  } else if (!start) {
     setStart(true);
     setButtonText('Pause');
   }
 }
 
-function resetButton() {
-
-}
 
 /*
 function startTimer() {
@@ -80,6 +77,8 @@ useEffect(() => {
     }
   }
 
+  const audio = new Audio('../public/assets/Softchime.mp3');
+
   if (seconds === '00' && minutes === '00') {
     audio.play();
     if (audio.currentTime == 10) {
@@ -105,7 +104,7 @@ useEffect(() => {
   playSound();
   */
 
-}, [start, minutes, seconds, decrementMinutes, decrementSeconds, audio])
+}, [start, minutes, seconds, decrementMinutes, decrementSeconds])
 
 //Functions that change time
 function decrementMinutes() {
@@ -152,12 +151,17 @@ function reset(){
           <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
           
         </div>
-      <div>
-        <button id="start" className='buttons' onClick={startButton}>Start</button>
-        <button id="pause" className='buttons' onClick={pauseButton}>{buttonText}</button>
-        <button id="reset" className='buttons' onClick={reset}>Reset</button>
+      <div className="buttons">
+        <button id="start" className='button' onClick={startButton}>Start</button>
+        <button id="pause" className='button' onClick={pauseButton}>{buttonText}</button>
+        <button id="reset" className='button' onClick={reset}>Reset</button>
       </div>
-      
+      <div className='setTime'>
+        <div id='breakTime'>
+
+        </div>
+        <div id='sessionTime'></div>
+      </div>
     </div>
   );
 }
