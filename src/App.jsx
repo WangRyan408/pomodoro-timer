@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import './App.css';
 
 function App() {
@@ -11,7 +11,8 @@ const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
 
 const myRef = useRef(null);
-const audio = document.querySelector('#alarm');
+//const audio = document.querySelector('#alarm');
+const audio = useMemo(() => new Audio('/public/assets/Softchime.mp3'), []);
 const num = {
   0: '00',
   1: '01',
@@ -27,7 +28,7 @@ const num = {
 
 function startButton() {
   setStart(true);
-  console.log({"Path": myRef.current.src})
+  console.log({"Path": audio.src})
 }
 
 function pauseButton() {
@@ -80,16 +81,16 @@ useEffect(() => {
   }
 
   if (seconds === '00' && minutes === '00') {
-    myRef.current.play();
+    audio.play();
     if (audio.currentTime == 10) {
-      myRef.current.currentTime = 0;
-      myRef.current.stop();
+      audio.currentTime = 0;
+      audio.stop();
     }
   }
 
 //Async function needed? This doesn't work.
 /*const playSound = async () => {
-    let path = myRef.current.src;
+    let path = audio.src;
     let importRes = await import(path);
     let sound = new Audio(importRes.default);
     sound.type = 'audio/mp3';
@@ -149,7 +150,7 @@ function reset(){
               <h1 id="idk">:</h1>
             </div>
           <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
-          <audio id="alarm" type="audio/mpeg" src="./public/assets/Softchime.mp3" ref={myRef}></audio>
+          
         </div>
       <div>
         <button id="start" className='buttons' onClick={startButton}>Start</button>
