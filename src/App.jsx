@@ -78,7 +78,7 @@ useEffect(() => {
   }
 
   const audio = new Audio('../public/assets/Softchime.mp3');
-
+/*
   if (seconds === '00' && minutes === '00') {
     audio.play();
     if (audio.currentTime == 10) {
@@ -86,23 +86,23 @@ useEffect(() => {
       audio.stop();
     }
   }
-
+*/
 //Async function needed? This doesn't work.
-/*const playSound = async () => {
-    let path = audio.src;
-    let importRes = await import(path);
-    let sound = new Audio(importRes.default);
-    sound.type = 'audio/mp3';
+const playSound = async () => {
+    //let path = audio.src;
+    //let importRes = await import(path);
+    //let sound = new Audio(path);
+    audio.type = 'audio/mp3';
     if (seconds === '00' && minutes === '00') {
-      sound.play();
-      if (sound.currentTime == 10) {
-        sound.currentTime = 0;
-        sound.stop();
+      await audio.play();
+      if (audio.currentTime == 10) {
+        audio.currentTime = 0;
+        audio.stop();
       }
     }
   }
   playSound();
-  */
+  
 
 }, [start, minutes, seconds, decrementMinutes, decrementSeconds])
 
