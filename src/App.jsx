@@ -139,8 +139,10 @@ function reset(){
   setButtonText('Pause');
 
 }
-
+//This works. But why?
 //https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav
+
+//This doesn't work? ????? WHYYYYYY
 //./public/assets/Softchime.mp3
   return (
     <div className="App">
