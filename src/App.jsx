@@ -77,12 +77,11 @@ useEffect(() => {
     }
   }
 
-  const audio = new Audio('./public/assets/Softchime.mp3');
+  const audio = new Audio('./assets/Softchime.mp3');
 
   if (seconds === '00' && minutes === '00') {
     audio.play();
-    
-    if (audio.currentTime == 10) {
+    if (audio.currentTime === 3) {
       audio.currentTime = 0;
       audio.stop();
     }
