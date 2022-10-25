@@ -11,12 +11,12 @@ const [seconds, setSeconds] = useState('10');
 const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
 const [breakTime, setBreakTime] = useState({
-  breakMinutes: '00',
+  breakMinutes: '01',
   breakSeconds: '00',
 });
 
 const [sessionTime, setSessionTime] = useState({
-  sessionMinutes: '00',
+  sessionMinutes: '25',
   sessionSeconds: '00'
 })
 
@@ -174,6 +174,74 @@ function decrementSeconds() {
   
 }
 
+function sessionToTimer() {
+  setMinutes(sessionTime.sessionMinutes);
+}
+
+function incrementBreakMin() {
+  let intMinute = Number(breakTime.breakMinutes);
+  if (intMinute < 60) {
+    intMinute++;
+  }
+  if (intMinute < 10) {
+    setBreakTime({
+      ...breakTime,
+      breakMinutes: num[intMinute]});
+  } else 
+  setBreakTime({
+    ...breakTime,
+    breakMinutes: intMinute.toString()});
+}
+
+function decrementBreakMin() {
+  let intMinute = Number(breakTime.breakMinutes);
+  if (intMinute > 1) {
+    intMinute--;
+  }
+  if (intMinute < 10) {
+    setBreakTime({
+      ...breakTime,
+      breakMinutes: num[intMinute]});
+  } else 
+  setBreakTime({
+    ...breakTime,
+    breakMinutes: intMinute.toString()});
+}
+
+
+function incrementMinButton() {
+  let intMinute = Number(sessionTime.sessionMinutes);
+  if (intMinute < 60) {
+    intMinute++;
+  }
+  if (intMinute < 10) {
+    setSessionTime({
+      ...sessionTime,
+      sessionMinutes: num[intMinute]});
+  } else 
+  setSessionTime({
+    ...sessionTime,
+    sessionMinutes: intMinute.toString()});
+}
+
+function decrementMinButton() {
+  let intMinute = Number(sessionTime.sessionMinutes);
+  if (intMinute > 1) {
+    intMinute--;
+  }
+  if (intMinute < 10) {
+    setSessionTime({
+      ...sessionTime,
+      sessionMinutes: num[intMinute]});
+  } else 
+  setSessionTime({
+    ...sessionTime,
+    sessionMinutes: intMinute.toString()});
+}
+
+
+
+
 function reset(){
   setStart(false);
   setMinutes('00');
@@ -195,7 +263,6 @@ function reset(){
               <h1 id="idk">:</h1>
             </div>
           <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
-          
         </div>
       <div className="buttons">
         <button id="start" className='button' onClick={startButton}>Start</button>
@@ -205,10 +272,23 @@ function reset(){
       <div className='setTime'>
         <div id='breakTime'>
           <h2>Break Time</h2>
-
+            <div className="timer">
+              <button className='arrow arrow-left' onClick={incrementBreakMin}>↑</button>
+              <h3 dangerouslySetInnerHTML={{__html: breakTime.breakMinutes}}></h3>
+              <h3>:</h3>
+              <h3 dangerouslySetInnerHTML={{__html: breakTime.breakSeconds}}></h3>
+              <button className='arrow arrow-right' onClick={decrementBreakMin}>&darr;</button>
+            </div>
         </div>
         <div id='sessionTime'>
           <h2>Session Time</h2>
+          <div className="timer">
+          <button className='arrow arrow-left' onClick={incrementMinButton}>↑</button>
+              <h3 dangerouslySetInnerHTML={{__html: sessionTime.sessionMinutes}}></h3>
+              <h3>:</h3>
+              <h3 dangerouslySetInnerHTML={{__html: sessionTime.sessionSeconds}}></h3>
+              <button className='arrow arrow-right' onClick={decrementMinButton}>&darr;</button>
+            </div>
         </div>
       </div>
     </div>

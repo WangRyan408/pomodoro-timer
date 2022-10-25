@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
+  
 }
 
 #timer {
@@ -50,14 +51,16 @@
 
 #title {
   color: white;
-  margin-top: -150px;
+  margin-top: -50px;
   
 }
 
 .setTime {
   display: flex;
   flex-direction: row;
-  outline: 1px solid white;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  
 }
 
 
@@ -67,8 +70,34 @@
   flex-direction: column;
 }
 
+.timer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 #sessionTime {
   margin-left: 3em;
   display: flex;
   flex-direction: column;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: black;
+  border: none;
+  border-radius: 3px;
+}
+
+.arrow-left {
+  margin-right: 1rem;
+}
+
+.arrow-right {
+  margin-left: 1rem;
 }
