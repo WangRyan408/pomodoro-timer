@@ -10,6 +10,16 @@ const [minutes, setMinutes] = useState('00');
 const [seconds, setSeconds] = useState('10');
 const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
+const [breakTime, setBreakTime] = useState({
+  breakMinutes: '00',
+  breakSeconds: '00',
+});
+
+const [sessionTime, setSessionTime] = useState({
+  sessionMinutes: '00',
+  sessionSeconds: '00'
+})
+
 
 const myRef = useRef(null);
 //const audio = document.querySelector('#alarm');
@@ -35,11 +45,26 @@ function pauseButton() {
   const resume = 'Resume';
 
   if (start) {
-    setStart(false);
-    setButtonText('Resume');
-  } else if (!start) {
-    setStart(true);
-    setButtonText('Pause');
+      setStart(false);
+      setButtonText('Resume'); 
+      console.log({
+        'Start Status:': start,
+        'Button Text:': buttonText,
+        'Minutes:': minutes,
+        'Seconds:': seconds
+      });
+  } 
+  else if (!start && buttonText !== 'Pause') {
+    if (minutes !== '00' && seconds !== '00'){
+      setStart(true);
+      setButtonText('Pause');
+    }
+      console.log({
+        'Start Status:': start,
+        'Button Text:': buttonText,
+        'Minutes:': minutes,
+        'Seconds:': seconds
+      })
   }
 }
 
@@ -65,28 +90,45 @@ useEffect(() => {
     if ((seconds === '0' || seconds === '00') && minutes > 0) {
       const intervalMin = setInterval(() => {
         setMinutes(decrementMinutes());
+        //console.log({'Minutes': minutes});
       }, 1000);
       return () => clearInterval(intervalMin);
     } else {
       if (seconds > 0) {
         const intervalSec = setInterval(() => {
           setSeconds(decrementSeconds());
+          console.log({'Seconds:': seconds});
         }, 1000);
         return () => clearInterval(intervalSec);
       }
     }
   }
 
-  const audio = new Audio('./public/assets/Softchime.mp3');
+  const audio = new Audio('./assets/Softchime.mp3');
 
   if (seconds === '00' && minutes === '00') {
-    audio.play();
+    if (audio.paused && audio.currentTime === 0) {
+      setTimeout(() => {
+        //audio.currentTime = 0;
+        audio.play();
+  
+        setTimeout(() => {
+          audio.pause();
+          audio.currentTime = 0;
+        }, 7000);
+      }, 1000);
+    } 
+    else if (!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
     
+    
+    /*
     if (audio.currentTime == 10) {
       audio.currentTime = 0;
       audio.stop();
-    }
-    
+    } */
   }
 
 //Async function needed? This doesn't work.
@@ -162,9 +204,12 @@ function reset(){
       </div>
       <div className='setTime'>
         <div id='breakTime'>
+          <h2>Break Time</h2>
 
         </div>
-        <div id='sessionTime'></div>
+        <div id='sessionTime'>
+          <h2>Session Time</h2>
+        </div>
       </div>
     </div>
   );

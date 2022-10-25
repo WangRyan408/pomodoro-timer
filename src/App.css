@@ -53,3 +53,22 @@
   margin-top: -150px;
   
 }
+
+.setTime {
+  display: flex;
+  flex-direction: row;
+  outline: 1px solid white;
+}
+
+
+#breakTime {
+  margin-right: 3em;
+  display: flex;
+  flex-direction: column;
+}
+
+#sessionTime {
+  margin-left: 3em;
+  display: flex;
+  flex-direction: column;
+}
