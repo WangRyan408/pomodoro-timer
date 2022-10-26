@@ -5,7 +5,7 @@ import './App.css';
 
 
 function App() {
-const [timer, setTimer] = useState('Session');
+const [mode, setMode] = useState('Session');
 const [minutes, setMinutes] = useState('25');
 const [seconds, setSeconds] = useState('00');
 const [buttonText, setButtonText] = useState('Pause');
@@ -68,7 +68,6 @@ useEffect(() => {
     if ((seconds === '0' || seconds === '00') && minutes > 0) {
       const intervalMin = setInterval(() => {
         setMinutes(decrementMinutes());
-        //console.log({'Minutes': minutes});
       }, 1000);
       return () => clearInterval(intervalMin);
     } else {
@@ -94,38 +93,23 @@ useEffect(() => {
           audio.currentTime = 0;
         }, 7000);
       }, 1000);
+      if (mode === "Session") {
+        setMode('Break');
+        setMinutes(breakTime.breakMinutes);
+      }
+      else if (mode === 'Break') {
+        setMode('Session');
+        setMinutes(sessionTime.sessionMinutes);
+      }
+
     } 
     else if (!audio.paused) {
       audio.pause();
       audio.currentTime = 0;
     }
     
-    
-    /*
-    if (audio.currentTime == 10) {
-      audio.currentTime = 0;
-      audio.stop();
-    } */
   }
-
-//Async function needed? This doesn't work.
-/*
-const playSound = async () => {
-    //let path = audio.src;
-    //let importRes = await import(path);
-    //let sound = new Audio(path);
-    audio.type = 'audio/mp3';
-    if (seconds === '00' && minutes === '00') {
-      await audio.play();
-      if (audio.currentTime == 10) {
-        audio.currentTime = 0;
-        audio.stop();
-      }
-    }
-  }
-  playSound();
-*/
-}, [start, minutes, seconds, decrementMinutes, decrementSeconds])
+}, [start, minutes, seconds, decrementMinutes, decrementSeconds, mode, breakTime.breakMinutes, sessionTime.sessionMinutes])
 
 //Functions that change time
 function decrementMinutes() {
@@ -158,14 +142,20 @@ function incrementBreakMin() {
     if (intMinute < 60) {
       intMinute++;
     }
-    if (intMinute < 10) {
+      if (intMinute < 10) {
+        setBreakTime({
+          ...breakTime,
+          breakMinutes: num[intMinute]});
+          if (mode === 'Break') {
+            setMinutes(num[intMinute]);
+          }
+      } else 
       setBreakTime({
         ...breakTime,
-        breakMinutes: num[intMinute]});
-    } else 
-    setBreakTime({
-      ...breakTime,
-      breakMinutes: intMinute.toString()});
+        breakMinutes: intMinute.toString()});
+        if (mode === 'Break') {
+          setMinutes(intMinute.toString());
+        }
   }
 }
 
@@ -179,10 +169,16 @@ function decrementBreakMin() {
       setBreakTime({
         ...breakTime,
         breakMinutes: num[intMinute]});
+        if (mode === 'Break') {
+          setMinutes(num[intMinute]);
+        }
     } else 
     setBreakTime({
       ...breakTime,
       breakMinutes: intMinute.toString()});
+      if (mode === 'Break') {
+        setMinutes(intMinute.toString());
+      }
   }
   
 }
@@ -198,15 +194,16 @@ function incrementSessionMin() {
       setSessionTime({
         ...sessionTime,
         sessionMinutes: num[intMinute]});
-        setMinutes(num[intMinute]);
+        if (mode === 'Session') {
+          setMinutes(num[intMinute]);
+        }
     } else 
     setSessionTime({
       ...sessionTime,
       sessionMinutes: intMinute.toString()});
-      setMinutes(intMinute.toString());
-  }
-  if (intMinute < 60) {
-    intMinute++;
+      if (mode === 'Session') {
+        setMinutes(intMinute.toString());
+      }
   }
 }
 
@@ -220,12 +217,16 @@ function decrementSessionMin() {
       setSessionTime({
         ...sessionTime,
         sessionMinutes: num[intMinute]});
-        setMinutes(num[intMinute]);
+        if (mode === 'Session') {
+          setMinutes(num[intMinute]);
+        }
     } else 
     setSessionTime({
       ...sessionTime,
       sessionMinutes: intMinute.toString()});
-      setMinutes(intMinute.toString());
+      if (mode === 'Session') {
+        setMinutes(intMinute.toString());
+      }
   }
 }
 
@@ -248,6 +249,7 @@ function reset(){
   return (
     <div className="App">
       <h1 id="title">Pomodoro Timer</h1>
+      <h2 id="mode" dangerouslySetInnerHTML={{__html: mode}}></h2>
         <div id="timer">
           <h1 id="test" dangerouslySetInnerHTML={{__html: minutes}}></h1>
             <div id="colon">
