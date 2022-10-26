@@ -50,10 +50,9 @@ function pauseButton() {
       });
   } 
   else if (!start && buttonText !== 'Pause') {
-    if (minutes !== '00' && seconds !== '00'){
       setStart(true);
       setButtonText('Pause');
-    }
+
       console.log({
         'Start Status:': start,
         'Button Text:': buttonText,
@@ -155,67 +154,79 @@ function decrementSeconds() {
 // Increment Buttons
 function incrementBreakMin() {
   let intMinute = Number(breakTime.breakMinutes);
-  if (intMinute < 60) {
-    intMinute++;
-  }
-  if (intMinute < 10) {
+  if (start === false) {
+    if (intMinute < 60) {
+      intMinute++;
+    }
+    if (intMinute < 10) {
+      setBreakTime({
+        ...breakTime,
+        breakMinutes: num[intMinute]});
+    } else 
     setBreakTime({
       ...breakTime,
-      breakMinutes: num[intMinute]});
-  } else 
-  setBreakTime({
-    ...breakTime,
-    breakMinutes: intMinute.toString()});
+      breakMinutes: intMinute.toString()});
+  }
 }
 
 function decrementBreakMin() {
   let intMinute = Number(breakTime.breakMinutes);
-  if (intMinute > 1) {
-    intMinute--;
-  }
-  if (intMinute < 10) {
+  if (start === false) {
+    if (intMinute > 1) {
+      intMinute--;
+    }
+    if (intMinute < 10) {
+      setBreakTime({
+        ...breakTime,
+        breakMinutes: num[intMinute]});
+    } else 
     setBreakTime({
       ...breakTime,
-      breakMinutes: num[intMinute]});
-  } else 
-  setBreakTime({
-    ...breakTime,
-    breakMinutes: intMinute.toString()});
+      breakMinutes: intMinute.toString()});
+  }
+  
 }
 
 
 function incrementSessionMin() {
   let intMinute = Number(sessionTime.sessionMinutes);
+  if (start === false) {
+    if (intMinute < 60) {
+      intMinute++;
+    }
+    if (intMinute < 10) {
+      setSessionTime({
+        ...sessionTime,
+        sessionMinutes: num[intMinute]});
+        setMinutes(num[intMinute]);
+    } else 
+    setSessionTime({
+      ...sessionTime,
+      sessionMinutes: intMinute.toString()});
+      setMinutes(intMinute.toString());
+  }
   if (intMinute < 60) {
     intMinute++;
   }
-  if (intMinute < 10) {
-    setSessionTime({
-      ...sessionTime,
-      sessionMinutes: num[intMinute]});
-      setMinutes(num[intMinute]);
-  } else 
-  setSessionTime({
-    ...sessionTime,
-    sessionMinutes: intMinute.toString()});
-    setMinutes(intMinute.toString());
 }
 
 function decrementSessionMin() {
   let intMinute = Number(sessionTime.sessionMinutes);
-  if (intMinute > 1) {
-    intMinute--;
-  }
-  if (intMinute < 10) {
+  if (start === false) {
+    if (intMinute > 1) {
+      intMinute--;
+    }
+    if (intMinute < 10) {
+      setSessionTime({
+        ...sessionTime,
+        sessionMinutes: num[intMinute]});
+        setMinutes(num[intMinute]);
+    } else 
     setSessionTime({
       ...sessionTime,
-      sessionMinutes: num[intMinute]});
-      setMinutes(num[intMinute]);
-  } else 
-  setSessionTime({
-    ...sessionTime,
-    sessionMinutes: intMinute.toString()});
-    setMinutes(intMinute.toString());
+      sessionMinutes: intMinute.toString()});
+      setMinutes(intMinute.toString());
+  }
 }
 
 function reset(){
