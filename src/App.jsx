@@ -11,7 +11,7 @@ const [seconds, setSeconds] = useState('00');
 const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
 const [breakTime, setBreakTime] = useState({
-  breakMinutes: '01',
+  breakMinutes: '5',
   breakSeconds: '00',
 });
 
@@ -236,7 +236,7 @@ function reset(){
   setSeconds('00');
   setBreakTime({
     ...breakTime,
-      breakMinutes: '05'
+      breakMinutes: '5'
   });
   setSessionTime({
     ...sessionTime,
@@ -249,38 +249,38 @@ function reset(){
   return (
     <div className="App">
       <h1 id="title">Pomodoro Timer</h1>
-      <h2 id="mode" dangerouslySetInnerHTML={{__html: mode}}></h2>
+      <h2 id="timer-label" dangerouslySetInnerHTML={{__html: mode}}></h2>
         <div id="timer">
-          <h1 id="test" dangerouslySetInnerHTML={{__html: minutes}}></h1>
+          <h1 id="time-left" dangerouslySetInnerHTML={{__html: minutes}}></h1>
             <div id="colon">
               <h1 id="idk">:</h1>
             </div>
           <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
         </div>
       <div className="buttons">
-        <button id="start" className='button' onClick={startButton}>Start</button>
+        <button id="start_stop" className='button' onClick={startButton}>Start</button>
         <button id="pause" className='button' onClick={pauseButton}>{buttonText}</button>
         <button id="reset" className='button' onClick={reset}>Reset</button>
       </div>
       <div className='setTime'>
         <div id='breakTime'>
-          <h2>Break Time</h2>
+          <h2 id="break-label">Break Time</h2>
             <div className="timer">
-              <button className='arrow arrow-left' onClick={incrementBreakMin}>↑</button>
-              <h3 dangerouslySetInnerHTML={{__html: breakTime.breakMinutes}}></h3>
+              <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin}>↑</button>
+              <h3 id="break-length" dangerouslySetInnerHTML={{__html: breakTime.breakMinutes}}></h3>
               <h3>:</h3>
               <h3 dangerouslySetInnerHTML={{__html: breakTime.breakSeconds}}></h3>
-              <button className='arrow arrow-right' onClick={decrementBreakMin}>&darr;</button>
+              <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin}>&darr;</button>
             </div>
         </div>
         <div id='sessionTime'>
-          <h2>Session Time</h2>
+          <h2 id="session-label">Session Time</h2>
           <div className="timer">
-          <button className='arrow arrow-left' onClick={incrementSessionMin}>↑</button>
-              <h3 dangerouslySetInnerHTML={{__html: sessionTime.sessionMinutes}}></h3>
+          <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>↑</button>
+              <h3 id="session-length" dangerouslySetInnerHTML={{__html: sessionTime.sessionMinutes}}></h3>
               <h3>:</h3>
               <h3 dangerouslySetInnerHTML={{__html: sessionTime.sessionSeconds}}></h3>
-              <button className='arrow arrow-right' onClick={decrementSessionMin}>&darr;</button>
+              <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>&darr;</button>
             </div>
         </div>
       </div>
