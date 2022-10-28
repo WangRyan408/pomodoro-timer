@@ -249,13 +249,13 @@ function reset(){
   return (
     <div className="App">
       <h1 id="title">Pomodoro Timer</h1>
-      <h2 id="timer-label" dangerouslySetInnerHTML={{__html: mode}}></h2>
+      <h2 id="timer-label">{mode}</h2>
         <div id="timer">
-          <h1 id="time-left" dangerouslySetInnerHTML={{__html: minutes}}></h1>
+          <h1 id="time-left">{minutes}</h1>
             <div id="colon">
               <h1 id="idk">:</h1>
             </div>
-          <h1 id="seconds" dangerouslySetInnerHTML={{__html: seconds}}></h1>
+          <h1 id="seconds">{seconds}</h1>
         </div>
       <div className="buttons">
         <button id="start_stop" className='button' onClick={startButton}>Start</button>
@@ -267,9 +267,9 @@ function reset(){
           <h2 id="break-label">Break Time</h2>
             <div className="timer">
               <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin}>↑</button>
-              <h3 id="break-length" dangerouslySetInnerHTML={{__html: breakTime.breakMinutes}}></h3>
+              <h3 id="break-length">{breakTime.breakMinutes}</h3>
               <h3>:</h3>
-              <h3 dangerouslySetInnerHTML={{__html: breakTime.breakSeconds}}></h3>
+              <h3>{breakTime.breakSeconds}</h3>
               <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin}>&darr;</button>
             </div>
         </div>
@@ -277,9 +277,9 @@ function reset(){
           <h2 id="session-label">Session Time</h2>
           <div className="timer">
           <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>↑</button>
-              <h3 id="session-length" dangerouslySetInnerHTML={{__html: sessionTime.sessionMinutes}}></h3>
+              <h3 id="session-length">{sessionTime.sessionMinutes}</h3>
               <h3>:</h3>
-              <h3 dangerouslySetInnerHTML={{__html: sessionTime.sessionSeconds}}></h3>
+              <h3>{sessionTime.sessionSeconds}</h3>
               <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>&darr;</button>
             </div>
         </div>
