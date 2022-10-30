@@ -4,6 +4,20 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 
+
+
+//TODO: Turn the 3 separate <h1></h1> into single h1. Use a function to concatenate strings
+/**
+ * 
+ * Psuedocode:
+ *  function clockify() {
+ *    let min = minutes;
+ *    let sec = seconds;
+ *    return min + ':' + sec;
+ * 
+ * }
+ * 
+ */
 function App() {
 const [mode, setMode] = useState('Session');
 const [minutes, setMinutes] = useState('25');
@@ -12,13 +26,13 @@ const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
 const [breakTime, setBreakTime] = useState({
   breakMinutes: '5',
-  breakSeconds: '00',
 });
 
 const [sessionTime, setSessionTime] = useState({
   sessionMinutes: '25',
-  sessionSeconds: '00'
 })
+
+const audio = document.getElementById('#alarm')
 
 const num = {
   0: '00',
@@ -81,7 +95,7 @@ useEffect(() => {
     }
   }
 
-  const audio = new Audio('./assets/Softchime.mp3');
+  //const audio = new Audio('./assets/Softchime.mp3');
 
   if (seconds === '00' && minutes === '00') {
     if (audio.paused && audio.currentTime === 0) {
@@ -109,7 +123,7 @@ useEffect(() => {
     }
     
   }
-}, [start, minutes, seconds, decrementMinutes, decrementSeconds, mode, breakTime.breakMinutes, sessionTime.sessionMinutes])
+}, [start, minutes, seconds, decrementMinutes, decrementSeconds, mode, breakTime.breakMinutes, sessionTime.sessionMinutes, audio])
 
 //Functions that change time
 function decrementMinutes() {
@@ -142,14 +156,14 @@ function incrementBreakMin() {
     if (intMinute < 60) {
       intMinute++;
     }
-      if (intMinute < 10) {
+      /*if (intMinute < 10) {
         setBreakTime({
           ...breakTime,
           breakMinutes: num[intMinute]});
           if (mode === 'Break') {
             setMinutes(num[intMinute]);
           }
-      } else 
+      } else */
       setBreakTime({
         ...breakTime,
         breakMinutes: intMinute.toString()});
@@ -165,14 +179,14 @@ function decrementBreakMin() {
     if (intMinute > 1) {
       intMinute--;
     }
-    if (intMinute < 10) {
+    /*if (intMinute < 10) {
       setBreakTime({
         ...breakTime,
         breakMinutes: num[intMinute]});
         if (mode === 'Break') {
           setMinutes(num[intMinute]);
         }
-    } else 
+    } else */
     setBreakTime({
       ...breakTime,
       breakMinutes: intMinute.toString()});
@@ -230,6 +244,12 @@ function decrementSessionMin() {
   }
 }
 
+function clockify() {
+      let min = minutes;
+      let sec = seconds;
+      return min + ':' + sec;
+   }
+
 function reset(){
   setStart(false);
   setMinutes('25');
@@ -245,17 +265,26 @@ function reset(){
   setButtonText('Pause');
 
 }
+/**
+ * <h1 id="time-left" >{clockify()}</h1>
+ * 
+ *  Original format:
+ * <h1 id="time-left">{minutes}</h1>
+            <div id="colon">
+              <h1 id="idk">:</h1>
+            </div>
+          <h1 id="seconds">{seconds}</h1>
+ */
+
+
 
   return (
     <div className="App">
       <h1 id="title">Pomodoro Timer</h1>
       <h2 id="timer-label">{mode}</h2>
         <div id="timer">
-          <h1 id="time-left">{minutes}</h1>
-            <div id="colon">
-              <h1 id="idk">:</h1>
-            </div>
-          <h1 id="seconds">{seconds}</h1>
+        <h1 id="time-left" >{clockify()}</h1>
+        <audio id="alarm" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>
         </div>
       <div className="buttons">
         <button id="start_stop" className='button' onClick={startButton}>Start</button>
@@ -268,8 +297,7 @@ function reset(){
             <div className="timer">
               <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin}>↑</button>
               <h3 id="break-length">{breakTime.breakMinutes}</h3>
-              <h3>:</h3>
-              <h3>{breakTime.breakSeconds}</h3>
+              
               <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin}>&darr;</button>
             </div>
         </div>
@@ -278,8 +306,6 @@ function reset(){
           <div className="timer">
           <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>↑</button>
               <h3 id="session-length">{sessionTime.sessionMinutes}</h3>
-              <h3>:</h3>
-              <h3>{sessionTime.sessionSeconds}</h3>
               <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>&darr;</button>
             </div>
         </div>
