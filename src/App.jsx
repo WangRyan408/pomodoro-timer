@@ -6,18 +6,7 @@ import './App.css';
 
 
 
-//TODO: Turn the 3 separate <h1></h1> into single h1. Use a function to concatenate strings
-/**
- * 
- * Psuedocode:
- *  function clockify() {
- *    let min = minutes;
- *    let sec = seconds;
- *    return min + ':' + sec;
- * 
- * }
- * 
- */
+//TODO:
 function App() {
 const [mode, setMode] = useState('Session');
 const [minutes, setMinutes] = useState('25');
@@ -25,14 +14,14 @@ const [seconds, setSeconds] = useState('00');
 const [buttonText, setButtonText] = useState('Pause');
 const [start, setStart] = useState(false);
 const [breakTime, setBreakTime] = useState({
-  breakMinutes: '5',
+  breakMinutes: '05',
 });
 
 const [sessionTime, setSessionTime] = useState({
   sessionMinutes: '25',
 })
 
-const audio = document.getElementById('#alarm')
+const audio = document.querySelector('#beep');
 
 const num = {
   0: '00',
@@ -48,14 +37,14 @@ const num = {
 }
 
 function startButton() {
-  setStart(true);
-  
+  //setStart(true);
+  pauseButton();
 }
 
 function pauseButton() {
   if (start) {
       setStart(false);
-      setButtonText('Resume'); 
+      //setButtonText('Resume'); 
       console.log({
         'Start Status:': start,
         'Button Text:': buttonText,
@@ -63,7 +52,8 @@ function pauseButton() {
         'Seconds:': seconds
       });
   } 
-  else if (!start && buttonText !== 'Pause') {
+  //else if (!start && buttonText !== 'Pause')
+  else if (!start) {
       setStart(true);
       setButtonText('Pause');
 
@@ -156,14 +146,14 @@ function incrementBreakMin() {
     if (intMinute < 60) {
       intMinute++;
     }
-      /*if (intMinute < 10) {
+      if (intMinute < 10) {
         setBreakTime({
           ...breakTime,
           breakMinutes: num[intMinute]});
           if (mode === 'Break') {
             setMinutes(num[intMinute]);
           }
-      } else */
+      } else 
       setBreakTime({
         ...breakTime,
         breakMinutes: intMinute.toString()});
@@ -179,14 +169,14 @@ function decrementBreakMin() {
     if (intMinute > 1) {
       intMinute--;
     }
-    /*if (intMinute < 10) {
+    if (intMinute < 10) {
       setBreakTime({
         ...breakTime,
         breakMinutes: num[intMinute]});
         if (mode === 'Break') {
           setMinutes(num[intMinute]);
         }
-    } else */
+    } else 
     setBreakTime({
       ...breakTime,
       breakMinutes: intMinute.toString()});
@@ -211,13 +201,15 @@ function incrementSessionMin() {
         if (mode === 'Session') {
           setMinutes(num[intMinute]);
         }
-    } else 
-    setSessionTime({
-      ...sessionTime,
-      sessionMinutes: intMinute.toString()});
-      if (mode === 'Session') {
-        setMinutes(intMinute.toString());
-      }
+    } else {
+      setSessionTime({
+        ...sessionTime,
+        sessionMinutes: intMinute.toString()});
+        if (mode === 'Session') {
+          setMinutes(intMinute.toString());
+        }
+    }
+    
   }
 }
 
@@ -234,13 +226,15 @@ function decrementSessionMin() {
         if (mode === 'Session') {
           setMinutes(num[intMinute]);
         }
-    } else 
-    setSessionTime({
-      ...sessionTime,
-      sessionMinutes: intMinute.toString()});
-      if (mode === 'Session') {
-        setMinutes(intMinute.toString());
-      }
+    } else {
+      setSessionTime({
+        ...sessionTime,
+        sessionMinutes: intMinute.toString()});
+        if (mode === 'Session') {
+          setMinutes(intMinute.toString());
+        }
+    }
+    
   }
 }
 
@@ -263,7 +257,9 @@ function reset(){
       sessionMinutes: '25'
   });
   setButtonText('Pause');
-
+  setMode("Session");
+  audio.pause();
+  audio.currentTime = 0;
 }
 /**
  * <h1 id="time-left" >{clockify()}</h1>
@@ -284,7 +280,7 @@ function reset(){
       <h2 id="timer-label">{mode}</h2>
         <div id="timer">
         <h1 id="time-left" >{clockify()}</h1>
-        <audio id="alarm" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>
+        <audio id="beep" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>
         </div>
       <div className="buttons">
         <button id="start_stop" className='button' onClick={startButton}>Start</button>
