@@ -95,15 +95,16 @@ useEffect(() => {
   }
 
   //const audio = new Audio('./assets/Softchime.mp3');
-
+/*
   if (seconds === '01' && minutes === '00') {
     setStart(false);
       const pauseInterval = setInterval(() => {
         setStart(true);
       }, 3000);
       return () => clearInterval(pauseInterval);
-    }
+    } */
   if (seconds === '00' && minutes === '00') {
+    setStart(false);
     if (audio.paused && audio.currentTime === 0) {
       setTimeout(() => {
         audio.play();
@@ -114,19 +115,35 @@ useEffect(() => {
         }, 7000);
       }, 1000);
       
-      setStart(false);
-      const pauseInterval = setInterval(() => {
-        setStart(true);
-      }, 3000);
-      
-      
       if (mode === "Session") {
-        setMode('Break');
-        setMinutes(breakTime.breakMinutes);
+        //setMode('Break');
+        const breakInterval = setInterval(() => {
+          setMode('Break');
+          setMinutes(breakTime.breakMinutes);
+          setStart(true);
+          console.log({
+            'Start Status:': start,
+            //'Button Text:': buttonText,
+            'Minutes:': minutes,
+            'Seconds:': seconds
+          });
+        }, 3000);
+        return () => clearInterval(breakInterval);
       }
       else if (mode === 'Break') {
-        setMode('Session');
-        setMinutes(sessionTime.sessionMinutes);
+        //setMode('Session');
+        const sessionInterval = setInterval(() => {
+          setMode('Session');
+          setMinutes(sessionTime.sessionMinutes);
+          setStart(true);
+          console.log({
+            'Start Status:': start,
+            //'Button Text:': buttonText,
+            'Minutes:': minutes,
+            'Seconds:': seconds
+          });
+        }, 3000);
+        return () => clearInterval(sessionInterval);
       }
       
     } 
