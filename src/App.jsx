@@ -3,9 +3,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
 
-
-
-
 //TODO:
 function App() {
 const [mode, setMode] = useState('Session');
