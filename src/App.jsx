@@ -72,13 +72,25 @@ useEffect(() => {
     if ((seconds === '0' || seconds === '00') && minutes > 0) {
       const intervalMin = setInterval(() => {
         setMinutes(decrementMinutes());
+        console.log({
+          'Start Status:': start,
+          //'Button Text:': buttonText,
+          'Minutes:': minutes,
+          'Seconds:': seconds
+        });
       }, 1000);
+      
       return () => clearInterval(intervalMin);
     } else {
       if (seconds > 0) {
         const intervalSec = setInterval(() => {
           setSeconds(decrementSeconds());
-          console.log({'Seconds:': seconds});
+          console.log({
+            'Start Status:': start,
+            //'Button Text:': buttonText,
+            'Minutes:': minutes,
+            'Seconds:': seconds
+          });
         }, 1000);
         return () => clearInterval(intervalSec);
       }
@@ -87,6 +99,13 @@ useEffect(() => {
 
   //const audio = new Audio('./assets/Softchime.mp3');
 
+  if (seconds === '01' && minutes === '00') {
+    setStart(false);
+      const pauseInterval = setInterval(() => {
+        setStart(true);
+      }, 3000);
+      return () => clearInterval(pauseInterval);
+    }
   if (seconds === '00' && minutes === '00') {
     if (audio.paused && audio.currentTime === 0) {
       setTimeout(() => {
@@ -97,6 +116,13 @@ useEffect(() => {
           audio.currentTime = 0;
         }, 7000);
       }, 1000);
+      
+      setStart(false);
+      const pauseInterval = setInterval(() => {
+        setStart(true);
+      }, 3000);
+      
+      
       if (mode === "Session") {
         setMode('Break');
         setMinutes(breakTime.breakMinutes);
@@ -105,14 +131,14 @@ useEffect(() => {
         setMode('Session');
         setMinutes(sessionTime.sessionMinutes);
       }
-
+      
     } 
     else if (!audio.paused) {
       audio.pause();
       audio.currentTime = 0;
     }
-    
   }
+
 }, [start, minutes, seconds, decrementMinutes, decrementSeconds, mode, breakTime.breakMinutes, sessionTime.sessionMinutes, audio])
 
 //Functions that change time
@@ -149,7 +175,7 @@ function incrementBreakMin() {
       if (intMinute < 10) {
         setBreakTime({
           ...breakTime,
-          breakMinutes: num[intMinute]});
+          breakMinutes: intMinute.toString()});
           if (mode === 'Break') {
             setMinutes(num[intMinute]);
           }
@@ -172,7 +198,7 @@ function decrementBreakMin() {
     if (intMinute < 10) {
       setBreakTime({
         ...breakTime,
-        breakMinutes: num[intMinute]});
+        breakMinutes: intMinute.toString()});
         if (mode === 'Break') {
           setMinutes(num[intMinute]);
         }
@@ -197,7 +223,7 @@ function incrementSessionMin() {
     if (intMinute < 10) {
       setSessionTime({
         ...sessionTime,
-        sessionMinutes: num[intMinute]});
+        sessionMinutes: intMinute.toString()});
         if (mode === 'Session') {
           setMinutes(num[intMinute]);
         }
@@ -222,7 +248,7 @@ function decrementSessionMin() {
     if (intMinute < 10) {
       setSessionTime({
         ...sessionTime,
-        sessionMinutes: num[intMinute]});
+        sessionMinutes: intMinute.toString()});
         if (mode === 'Session') {
           setMinutes(num[intMinute]);
         }

@@ -19,7 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 50%;
-  margin-top: 20%;
+  margin-top: 10%;
   background-color: var(--bg-color-dark);
   display: flex;
   flex-direction: column;
