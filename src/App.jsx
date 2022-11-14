@@ -11,7 +11,7 @@ function App() {
   const [buttonText, setButtonText] = useState('Pause');
   const [start, setStart] = useState(false);
   const [breakTime, setBreakTime] = useState({
-    breakMinutes: '05',
+    breakMinutes: '5',
     breakSeconds: '00'
   });
   
@@ -105,55 +105,9 @@ function App() {
           audio.play();
     
         },);
-        /*
-        if (mode === "Session") {
-          //setMode('Break');
-          setTimeout(() => {
-            setMode('Break');
-            setMinutes(breakTime.breakMinutes);
-            setStart(true);
-          }, 1000);
-          */
-/*
-          const breakInterval = setInterval(() => {
-            setMode('Break');
-            setMinutes(breakTime.breakMinutes);
-            setStart(true);
-            console.log({
-              'Start Status:': start,
-              //'Button Text:': buttonText,
-              'Minutes:': minutes,
-              'Seconds:': seconds
-            });
-            
-          }, 1000);
-          return () => clearInterval(breakInterval);
-          */
+       
         }
-        /*
-        if (mode === 'Break') {
-
-          setTimeout(() => {
-            setMode('Session');
-            setMinutes(sessionTime.sessionMinutes);
-            setStart(true);
-          }, 1000);
-          */
-          /*
-          //setMode('Session');
-          const sessionInterval = setInterval(() => {
-            setMode('Session');
-            setMinutes(sessionTime.sessionMinutes);
-            setStart(true);
-            console.log({
-              'Start Status:': start,
-              //'Button Text:': buttonText,
-              'Minutes:': minutes,
-              'Seconds:': seconds
-            });
-          }, 1000);
-          return () => clearInterval(sessionInterval);
-          */
+        
           if (mode === "Session") {
             //setMode('Break');
             setTimeout(() => {
