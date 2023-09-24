@@ -4,7 +4,7 @@
 .App {
   text-align: center;
   background-color: var(--bg-color-red);
-  height: 50%;
+  height: 100%;
   width: 95%;
   border-radius: 10px;
   display: flex;
@@ -13,10 +13,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-}
-
-.buttons {
-  margin: 10px 5px 0 5px;
+  
 }
 
 #timer {
@@ -31,7 +28,7 @@
 
 }
 
-button {
+.button {
   background-color: black;
   color: white;
   border-radius: 5px;
@@ -44,7 +41,13 @@ button {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  margin: 10px 5px 0 5px;
 }
+
+.buttons {
+  margin-bottom: -25px;
+  }
+
 
 
 #idk {
@@ -53,5 +56,62 @@ button {
 
 #title {
   color: white;
-  margin-top: -25px;
+  margin-top: -50px;
+  
+}
+
+.setTime {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -30px;
+  margin-top: 2rem;  
+  
+}
+
+
+#breakTime {
+  margin-right: 3em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  
+}
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+  
+}
+
+#sessionTime {
+  margin-left: 3em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: black;
+  border: none;
+  border-radius: 3px;
+}
+
+.arrow-left {
+  margin-right: 1rem;
+}
+
+.arrow-right {
+  margin-left: 1rem;
+}
+
+#timer-label {
+  margin-top: -5px;
+  margin-bottom: -1rem;
 }
