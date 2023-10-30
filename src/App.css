@@ -4,8 +4,9 @@
 .App {
   text-align: center;
   background-color: var(--bg-color-red);
-  height: 100%;
+  height: 50%;
   width: 95%;
+  margin-top: -50px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  
+  color: white;
 }
 
 #timer {
@@ -47,12 +48,6 @@
 .buttons {
   margin-bottom: -25px;
   }
-
-
-
-#idk {
-  margin-top: 20px;
-}
 
 #title {
   color: white;
@@ -101,6 +96,7 @@
   background-color: black;
   border: none;
   border-radius: 3px;
+  color: white;
 }
 
 .arrow-left {
