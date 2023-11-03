@@ -18,8 +18,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 50%;
-  margin-top: 10%;
+  height: 100%;
+  margin-top: 5%;
   background-color: var(--bg-color-dark);
   display: flex;
   flex-direction: column;

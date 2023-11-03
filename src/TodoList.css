@@ -1,0 +1,45 @@
+.todolist {
+    color: white;
+    height: 25vh;
+    width: 35vw;
+    margin-top: 100px;
+    border: solid red 1px;
+    background-color: olive;
+}
+
+#To-Do {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#listContainer {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#taskInput {
+    text-align: center;
+}
+
+/**
+    Add if user finishes task
+*/
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.listElem {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.strike {
+    margin-left: auto;
+    margin-right: -10px;
+}
