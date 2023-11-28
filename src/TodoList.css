@@ -43,3 +43,18 @@
     margin-left: auto;
     margin-right: -10px;
 }
+
+.li-container{
+    display: flex;
+    flex-direction: row;
+    max-height: 20px;
+    
+}
+
+.listElem {
+    width: 50%;
+}
+
+.deleteButton {
+    width: 50%;
+}

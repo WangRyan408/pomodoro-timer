@@ -5,6 +5,7 @@ import './App.css';
 
 //TODO:
 function App() {
+  //UseState Hooks to hold/modify UI State
   const [mode, setMode] = useState('Session');
   const [minutes, setMinutes] = useState('25');
   const [seconds, setSeconds] = useState('00');
@@ -20,23 +21,10 @@ function App() {
     sessionSeconds: '00'
   })
   
-  const audio = document.querySelector('#beep');
+  const audio = document.querySelector('#beep'); // Selects audio tag/element
   
-  /** 
-  const num = {
-    0: '00',
-    1: '01',
-    2: '02',
-    3: '03',
-    4: '04',
-    5: '05',
-    6: '06',
-    7: '07',
-    8: '08',
-    9: '09',
-
-    }
-*/
+ 
+  //Appending zeros to single digits.
   const numMemo = useMemo(() => {
     return {
       0: '00',
