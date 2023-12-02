@@ -3,8 +3,10 @@
     height: 25vh;
     width: 35vw;
     margin-top: 100px;
-    border: solid red 1px;
-    background-color: olive;
+    border-radius: 10px;
+    border: solid rgb(135, 53, 53) 5px;
+    background-color: rgb(9, 74, 0);
+ 
 }
 
 #To-Do {
