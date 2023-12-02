@@ -124,6 +124,31 @@ function App() {
           }
     }
   }
+
+  function incrementBreakMin5() {
+    let intMinute5 = Number(breakTime.breakMinutes);
+    if (start === false) {
+      if (intMinute5 < 60) {
+        intMinute5+=5;
+      }
+        if (intMinute5 < 10) {
+          setBreakTime({
+            ...breakTime,
+            breakMinutes: intMinute5.toString()});
+            if (mode === 'Break') {
+              setMinutes(numMemo[intMinute5]);
+              setSeconds('00');
+            }
+        } else 
+        setBreakTime({
+          ...breakTime,
+          breakMinutes: intMinute5.toString()});
+          if (mode === 'Break') {
+            setMinutes(intMinute5.toString());
+            setMinutes('00');
+          }
+    }
+  }
   
   function decrementBreakMin() {
     let intMinute = Number(breakTime.breakMinutes);
@@ -151,7 +176,32 @@ function App() {
     
   }
   
-  
+  function decrementBreakMin5() {
+    let intMinute = Number(breakTime.breakMinutes);
+    if (start === false) {
+      if (intMinute > 1) {
+        intMinute-=5;
+      }
+      if (intMinute < 10) {
+        setBreakTime({
+          ...breakTime,
+          breakMinutes: intMinute.toString()});
+          if (mode === 'Break') {
+            setMinutes(numMemo[intMinute]);
+            setSeconds('00');
+          }
+      } else 
+      setBreakTime({
+        ...breakTime,
+        breakMinutes: intMinute.toString()});
+        if (mode === 'Break') {
+          setMinutes(intMinute.toString());
+          setSeconds('00');
+        }
+    }
+    
+  }
+
   function incrementSessionMin() {
     let intMinute = Number(sessionTime.sessionMinutes);
     if (start === false) {
@@ -178,7 +228,34 @@ function App() {
       
     }
   }
-  
+
+  function incrementSessionMin5() {
+    let intMinute = Number(sessionTime.sessionMinutes);
+    if (start === false) {
+      if (intMinute < 60) {
+        intMinute+=5;
+      }
+      if (intMinute < 10) {
+        setSessionTime({
+          ...sessionTime,
+          sessionMinutes: intMinute.toString()});
+          if (mode === 'Session') {
+            setMinutes(numMemo[intMinute]);
+            setSeconds('00');
+          }
+      } else {
+        setSessionTime({
+          ...sessionTime,
+          sessionMinutes: intMinute.toString()});
+          if (mode === 'Session') {
+            setMinutes(intMinute.toString());
+            setSeconds('00');
+          }
+      }
+      
+    }
+  }
+
   function decrementSessionMin() {
     let intMinute = Number(sessionTime.sessionMinutes);
     if (start === false) {
@@ -206,6 +283,33 @@ function App() {
     }
   }
   
+  function decrementSessionMin5() {
+    let intMinute = Number(sessionTime.sessionMinutes);
+    if (start === false) {
+      if (intMinute > 1) {
+        intMinute-=5;
+      }
+      if (intMinute < 10) {
+        setSessionTime({
+          ...sessionTime,
+          sessionMinutes: intMinute.toString()});
+          if (mode === 'Session') {
+            setMinutes(numMemo[intMinute]);
+            setSeconds('00');
+          }
+      } else {
+        setSessionTime({
+          ...sessionTime,
+          sessionMinutes: intMinute.toString()});
+          if (mode === 'Session') {
+            setMinutes(intMinute.toString());
+            setSeconds('00');
+          }
+      }
+      
+    }
+  }
+
   function clockify() {
         let min = minutes;
         let sec = seconds;
@@ -329,18 +433,22 @@ function App() {
           <div id='breakTime'>
             <h2 id="break-label">Break Time</h2>
               <div className="timer">
-                <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin}>↑</button>
+                <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin5}>+5</button>
+                <button className='arrow arrow-left' id="break-increment" onClick={incrementBreakMin}>+1</button>
                 <h3 id="break-length">{breakTime.breakMinutes}</h3>
                 
-                <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin}>&darr;</button>
+                <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin}>-1</button>
+                <button className='arrow arrow-right' id="break-decrement" onClick={decrementBreakMin5}>-5</button>
               </div>
           </div>
           <div id='sessionTime'>
             <h2 id="session-label">Session Time</h2>
             <div className="timer">
-            <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>↑</button>
+            <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin5}>+5</button>
+            <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>+1</button>
                 <h3 id="session-length">{sessionTime.sessionMinutes}</h3>
-                <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>&darr;</button>
+                <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>-1</button>
+                <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin5}>-5</button>
               </div>
           </div>
         </div>
