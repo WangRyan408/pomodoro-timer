@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect, useCallback, useMemo, createElement } from 'react';
 import './Music.css';
 
-
-
+const sseUri =
+  'https://coderadio-admin-v2.freecodecamp.org/api/live/nowplaying/sse?cf_connect=%7B%22subs%22%3A%7B%22station%3Acoderadio%22%3A%7B%7D%2C%22global%3Atime%22%3A%7B%7D%7D%7D';
+const sse = new EventSource(sseUri);
 
 
 
@@ -21,18 +22,35 @@ function Music(){
 
             const jsonResponse = await fetch(jsonUri);
             const res = await jsonResponse.json();
-
-           console.log(res);
+           
+            console.log(res);
+           //console.log({"Fetch Response": res});
          const {listeners, live, now_playing, playing_next, song_history, station} = res;
-
-        console.log(playing_next);
+        
+         
+        //const test = JSON.parse(res);
+        //console.log({"JSON Parse": test});
+         //setCurrSong(JSON.parse(res));
+        //console.log(playing_next);
+        //console.log({"Current Song" :currSong});
         setTitle(playing_next.song.text);
         setAlbum(playing_next.song.album);
-
+        
         }
 
+        /*
+        sse.onmessage = event => {
+            const data = JSON.parse(event.data);
+            const np = data?.pub?.data?.np || null;
+            if (np) {
+                if (np.now_pling.song.id !== )
+            }
+        }
+        */
+
+
         fetchData();
-    },[title, album, jsonUri]);
+    },[]);
 
 
 
