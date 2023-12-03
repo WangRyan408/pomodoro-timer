@@ -444,11 +444,11 @@ function App() {
           <div id='sessionTime'>
             <h2 id="session-label">Session Time</h2>
             <div className="timer">
-            <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin5}>+5</button>
+            <button className='arrow arrow-left' id="session-increment5" onClick={incrementSessionMin5}>+5</button>
             <button className='arrow arrow-left' id="session-increment" onClick={incrementSessionMin}>+1</button>
                 <h3 id="session-length">{sessionTime.sessionMinutes}</h3>
                 <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin}>-1</button>
-                <button className='arrow arrow-right' id="session-decrement" onClick={decrementSessionMin5}>-5</button>
+                <button className='arrow arrow-right' id="session-decrement5" onClick={decrementSessionMin5}>-5</button>
               </div>
           </div>
         </div>
