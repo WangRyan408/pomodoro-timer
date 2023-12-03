@@ -11,9 +11,10 @@ const sse = new EventSource(sseUri);
 
 function Music(){
 
-    const [currSong, setCurrSong] = useState({});
-    const [title, setTitle] = useState("");
-    const [album, setAlbum] = useState("");
+    //const [currSong, setCurrSong] = useState({});
+    const [songID, setSongID] = useState(""); //Current SongID
+    const [title, setTitle] = useState(""); //Current Song Title
+    const [album, setAlbum] = useState(""); //Current Album
 
     const jsonUri = `https://coderadio-admin-v2.freecodecamp.org/api/nowplaying_static/coderadio.json`;
 
@@ -33,24 +34,29 @@ function Music(){
          //setCurrSong(JSON.parse(res));
         //console.log(playing_next);
         //console.log({"Current Song" :currSong});
-        setTitle(playing_next.song.text);
-        setAlbum(playing_next.song.album);
-        
+        setTitle(now_playing.song.text);
+        setAlbum(now_playing.song.album);
+        setSongID(now_playing.song.id);
         }
 
-        /*
+         fetchData();
+
         sse.onmessage = event => {
             const data = JSON.parse(event.data);
             const np = data?.pub?.data?.np || null;
             if (np) {
-                if (np.now_pling.song.id !== )
+                if (np.now_playing.song.id !== songID) {
+                    setTitle(np.now_playing.song.text);
+                    setAlbum(np.now_playing.song.album);
+                    setSongID(np.now_playing.song.id);
+                }
             }
         }
-        */
+        
 
 
-        fetchData();
-    },[]);
+        
+    },[songID, title, album, jsonUri]);
 
 
 
