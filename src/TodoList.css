@@ -5,8 +5,8 @@
     margin-top: 100px;
 
     border-radius: 10px;
-    border: solid rgb(135, 53, 53) 5px;
-    background-color: rgb(9, 74, 0);
+    border: solid white 5px;
+    background-color: rgb(65, 68, 88);
 
 }
 
@@ -61,4 +61,8 @@
 .deleteButton {
     width: 50%;
     cursor: pointer;
+}
+
+#submit {
+    color: black;
 }
