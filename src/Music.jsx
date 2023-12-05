@@ -64,8 +64,8 @@ function Music(){
     return(
         <div id="music-box">
             <div id="music-header">
-                <h2>Album: {title}</h2>
-                <h2>Currently Playing: {album}</h2>
+                <h2>Album: {album}</h2>
+                <h2>Currently Playing: {title}</h2>
             </div>
             
             <audio src="https://coderadio-admin-v2.freecodecamp.org/listen/coderadio/radio.mp3" controls></audio>
