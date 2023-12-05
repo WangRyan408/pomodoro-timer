@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
 * {
   box-sizing: content-box;
   --bg-color-red: rgb(135, 54, 53);
@@ -13,7 +13,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Hedvig Letters Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -26,8 +26,6 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
-  outline: 0px solid rgb(255, 255, 255);
-
 }
 
 #root {

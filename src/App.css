@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .App {
@@ -13,8 +13,10 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  color: rgb(255, 255, 255);
+
+  font-family: 'Hedvig Letters Serif';
+  color: white;
+
 }
 
 .App {
