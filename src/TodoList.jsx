@@ -35,8 +35,8 @@ if (list.length < 5){
                     <div id="list">
                     <ul>{list.length > 0 && list.map((item, i) => 
                         <li id={`li-${i}`} className={'li-container'}>
-                            <p id={`item-${i}`} className={'listElem'}>{item}</p>
-                            <p onClick={() => deleteItem(i)} className={'deleteButton'}>X</p> 
+                            <p id={`item-${i}`} className={'listElem'}>{item}</p> {/*Actual To-Do Comment/Note */}
+                            <p onClick={() => deleteItem(i)} className={'deleteButton'}>X</p> {/* Button to Delete To-Do Entry */} 
                         </li>)}
                     </ul>
                     </div>
