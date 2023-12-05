@@ -1,3 +1,10 @@
 * {
-    color:white;
+    color:rgb(255, 255, 255);
+    form{
+        Left: 50%;
+        top: 40%;
+        margin-left: -10%;
+        margin: 8px;
+        display: inline-block;
+    }
 }

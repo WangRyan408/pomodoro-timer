@@ -14,13 +14,21 @@
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: rgb(255, 255, 255);
 }
+
+.App {
+background-image: url(https://img.freepik.com/premium-photo/sakura-cherry-blossoms-spring-japan-ai-generated-spring-landscape_467123-14239.jpg?w=900);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+}
+
 
 #timer {
   display: flex;
   flex-direction: row;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #colon {
@@ -30,13 +38,14 @@
 }
 
 .button {
-  background-color: black;
-  color: white;
-  border-radius: 5px;
+  background-color: rgb(189, 151, 224);
+  color: rgb(0, 0, 0);
+  border-radius: 15px;
   border: none;
   margin: 0;
-  padding: 1rem 2rem;
-  text-decoration: none;
+  padding: .8rem 1rem;
+  text-decoration-line:
+   underline;
   line-height: 1;
   cursor: pointer;
   text-align: center;
@@ -46,11 +55,11 @@
 }
 
 .buttons {
-  margin-bottom: -25px;
+  margin-bottom: -20px;
   }
 
 #title {
-  color: white;
+  color: rgb(255, 255, 255);
   margin-top: -50px;
   
 }
@@ -93,10 +102,10 @@
   font-size: 20px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: black;
+  background-color: rgb(189, 151, 224);
   border: none;
   border-radius: 3px;
-  color: white;
+  color: black;
 }
 
 .arrow-left {
@@ -111,3 +120,4 @@
   margin-top: -5px;
   margin-bottom: -1rem;
 }
+
