@@ -26,6 +26,8 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
+  outline: 0px solid rgb(255, 255, 255);
+
 }
 
 #root {
